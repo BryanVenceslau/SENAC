@@ -1,6 +1,5 @@
 programa
 {
-	
 	funcao inicio()
 	{
 		/*Quando uma empresa contrata o hotel para abrigar eventos, o hotel oferece garçons para servir os convidados.
@@ -23,13 +22,3 @@ programa
 		escreva("\nO custo total para a contratação será de R$",custoTotal)
 	}
 }
-/* $$$ Portugol Studio $$$ 
- * 
- * Esta seção do arquivo guarda informações do Portugol Studio.
- * Você pode apagá-la se estiver utilizando outro editor.
- * 
- * @POSICAO-CURSOR = 532; 
- * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
- * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
- */
