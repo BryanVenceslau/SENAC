@@ -1,0 +1,89 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		caracter avaliacao, mudarNota
+		inteiro aprovado = 0, reprovado = 0, contador = 1, nota
+		logico joao = verdadeiro, maria = verdadeiro, ana = verdadeiro
+		
+		escreva ("---- Votação de aprovados para próxima etapa ----\n [1] - João\n [2] - Maria\n [3] - Ana\n")
+		escreva ("----------\nObs.:\nInsira a avaliação de 3 usuários para verificar se\nos participantes serão aprovados para a próxima etapa.\n\n")
+		escreva ("Respostas disponíveis: A - Aprovado(a) | R - Reprovado(a)\n\n")
+
+		faca{
+			escreva ("---------- Candidato ",contador," ----------\n\n")
+			para (inteiro qtdAvaliacao = 1; qtdAvaliacao <= 3; qtdAvaliacao++){
+				escreva (qtdAvaliacao,"° Avaliação: ")
+				leia (avaliacao)
+				
+				enquanto (avaliacao != 'a' e avaliacao != 'A' e avaliacao != 'r' e avaliacao != 'R'){
+					escreva ("Avaliação incorreta! Digite novamente: ")
+					leia (avaliacao)
+				}
+				
+				se (avaliacao == 'a' ou avaliacao == 'A'){
+					aprovado++
+				}
+				senao se (avaliacao == 'r' ou avaliacao == 'R'){
+					reprovado++
+				}
+			}
+			limpa()
+			se (aprovado >= 2){
+				escreva ("----------\nParticipante número ",contador,", você foi aprovado(a) com ",aprovado," votos para a próxima etapa, parabéns!\n")
+				se (contador == 1){
+					joao = verdadeiro
+				}
+				senao se (contador == 2){
+					maria = verdadeiro
+				}
+				senao se (contador == 3){
+					ana = verdadeiro
+				}
+			}
+			senao se (reprovado >= 2){
+		    		escreva ("----------\nParticipante número ",contador,", você foi reprovado(a) com ",reprovado," votos.\n")
+		    		se (contador == 1){
+					joao = falso
+				}
+				senao se (contador == 2){
+					maria = falso
+				}
+				senao se (contador == 3){
+					ana = falso
+				}
+			}	
+			aprovado = 0
+			reprovado = 0
+			contador++
+		}enquanto (contador <= 3)
+			escreva ("\n---------- PLACAR ----------\n [1] - João (",joao,")\n [2] - Maria (",maria,")\n [3] - Ana (",ana,")\n")
+			escreva ("\n---------- AVALIAÇÃO ----------\nEm uma escala de 1 a 5,\no quanto você gostou da sua experiência?\nR: ")
+			leia (nota)
+			escreva ("\n")
+			
+			enquanto (nota < 1 ou nota > 5){
+				escreva ("Nota inválida! Tente novamente: ")
+				leia (nota)
+			}			
+			escreva ("\nSua nota foi ",nota)
+			escreva ("\n----------\nDeseja alterar sua nota? S/N\nR: ")
+			leia (mudarNota)
+
+			se (mudarNota == 's' ou mudarNota == 'S'){
+				limpa()
+				escreva ("\n---------- AVALIAÇÃO ----------\nEm uma escala de 1 a 5,\no quanto você gostou da sua experiência?\nR: ")
+				leia (nota)
+				escreva ("\n")
+				
+				enquanto (nota < 1 ou nota > 5){
+				escreva ("Nota inválida! Tente novamente: ")
+				leia (nota)
+				}	
+				escreva ("\nSua nota final foi ",nota,"\n----------")
+			} senao se (mudarNota == 'n' ou mudarNota == 'N'){
+				escreva ("\nSua nota final foi ",nota,"\n----------")
+			}
+	}
+}
