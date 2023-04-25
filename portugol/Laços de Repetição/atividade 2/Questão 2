@@ -1,0 +1,39 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		/* É obrigatório utilizar um único PARA e não usar vetor ou listas. Monte um algoritmo em que se informa a quantidade de hóspedes e,
+		 *  para cada hóspede, leia o número do quarto e o valor da diária. Mostre na tela a mensagem “Quarto [numero]: R$ [valor]”. Ao final,
+		 *  mostre o total de diárias, o valor da menor diária e o valor da maior diária. */
+		 
+		inteiro hospedes, quarto, contador = 0
+		real diaria, menorDiaria = 0.0, maiorDiaria = 0.0, totalDiaria = 0.0
+
+		escreva ("---------- HOTEL ----------\nQuantos hóspedes serão?\nR: ")
+		leia (hospedes)
+		para (inteiro n = hospedes; n >= 1; n--){
+			enquanto (n >= 1){
+				escreva ("----------\nQual o número do quarto?\nR: ")
+				leia (quarto)
+				escreva ("Qual o valor da diária?\nR$ ")
+				leia (diaria)
+				escreva ("\nQuarto ",quarto,": R$ ",diaria,"\n")
+
+				totalDiaria = totalDiaria + diaria 
+				n--
+				enquanto (contador <=1){
+					menorDiaria = diaria
+					contador++
+				}
+				se (diaria > maiorDiaria){
+					maiorDiaria = diaria
+				}
+				senao se (maiorDiaria > diaria e diaria < menorDiaria){
+					menorDiaria = diaria
+				}
+			}
+		}
+		escreva ("----------\nMenor diária: R$ ",menorDiaria,"\nMaior diária: R$ ",maiorDiaria,"\n---\nTotal de diárias: R$ ",totalDiaria,"\n----------")
+	}
+}
