@@ -1,0 +1,45 @@
+programa
+{
+	
+	funcao inicio()
+	{	/* É obrigatório utilizar um único ENQUANTO. Escreva um algoritmo que receba o valor padrão de uma diária. Em seguida,
+		receba os nomes dos hóspedes e suas idades. Caso o hóspede tenha até 4 anos ele não paga hospedagem – nesses casos mostre
+		na tela “(Nome do hóspede) possui gratuidade” – e hóspedes com 80 anos ou mais pagam metade – mostre na tela 
+		“(Nome do hóspede) paga meia”. Pergunte ao usuário se ele deseja continuar a informar os dados (“S” ou “N”) e, caso digite “N”,
+		encerre a execução. Ao fim, mostre a quantidade de gratuidades, a quantidade de meias hospedagens e o valor total, considerando
+		todos os hóspedes informados. */
+
+		real diaria, atrib, hospedagens = 0.0
+		inteiro idade, meia = 0, gratuidade = 0
+		cadeia hospede
+		caracter opcao = 'S'
+		
+		escreva ("---------- HOTEL ----------\nQual o valor padrão da diária?\nR$ ")
+		leia (diaria)
+		enquanto (opcao == 's' ou opcao == 'S'){
+			escreva ("---------- HOSPEDAGEM ----------\nQual o nome do hóspede?\nR: ")
+			leia (hospede)
+			escreva ("\nQual a idade do hóspede?\nR: ")
+			leia (idade)
+			
+			atrib = diaria
+			
+			se (idade <= 4){
+				escreva ("---\n",hospede," possui gratuidade!\n")
+				atrib = 0.0
+				gratuidade++
+			}
+			senao se (idade >= 80){
+				escreva ("---\n",hospede," paga meia!\n")
+				atrib = diaria / 2
+				meia++
+			}
+			hospedagens = hospedagens + atrib
+			
+			escreva ("----------\nDeseja continuar informando dados? S/N\nR: ")
+			leia (opcao)
+			limpa()
+		}
+		escreva ("---------- VALOR ----------\nTotal de hospedagens: R$",hospedagens,";\n",gratuidade," gratuidade(s);\n",meia," meia(s)\n----------")
+	}
+}
