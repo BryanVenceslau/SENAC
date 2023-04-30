@@ -1,0 +1,76 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		real nota[3] = {0.0, 0.0, 0.0}, media
+		cadeia nome[3]
+		caracter gabarito[5], cartao0[5], cartao1[5], cartao2[5]
+	
+		escreva ("--- CADASTRO DE GABARITO ---\n\n")
+		para (inteiro i = 0; i < 5; i++){
+			escreva ("Questão ",i + 1,": ")
+			leia (gabarito[i])
+		}
+		para (inteiro i = 0; i < 3; i++){
+		inteiro h = 0
+			limpa()
+			escreva ("------ Aluno ",i + 1," ------\n")
+			escreva ("Nome: ")
+			leia (nome[i])
+			escreva ("\n--- RESPOSTA ---\n\n")
+			se (i == 0){
+				enquanto (h < 4){
+					para (inteiro j = 0; j < 5; j++){
+					escreva ("Questão ",j + 1,": ")
+					leia (cartao0[j])
+						se (cartao0[h] == gabarito[h]){
+							nota[i] = nota[i] + 2
+							h++
+						}
+						senao{
+							h++
+						}
+					}
+				}
+			}
+			senao se (i == 1){
+				enquanto (h < 4){
+					para (inteiro j = 0; j < 5; j++){
+					escreva ("Questão ",j + 1,": ")
+					leia (cartao1[j])
+						se (cartao1[h] == gabarito[0]){
+							nota[i] = nota[i] + 2
+							h++
+						}
+						senao{
+							h++
+						}
+					}
+				}
+			}
+			senao se (i == 2){
+				enquanto (h < 4){
+					para (inteiro j = 0; j < 5; j++){
+					escreva ("Questão ",j + 1,": ")
+					leia (cartao2[j])
+						se (cartao2[h] == gabarito[0]){
+							nota[i] = nota[i] + 2
+							h++
+						}
+						senao{
+							h++
+						}
+					}
+				}
+			}
+		}
+		limpa()
+		escreva ("--- NOTAS FINAIS ---")
+		para (inteiro i = 0; i < 3; i++){
+			escreva ("\n",nome[i],"   \t",nota[i])
+		}
+		media = (nota[0] + nota[1] + nota[2]) / 3
+		escreva ("\n--------------------\nMédia da Turma: ",media)
+	}
+}
