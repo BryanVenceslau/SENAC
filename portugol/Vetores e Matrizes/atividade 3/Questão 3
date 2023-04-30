@@ -1,0 +1,56 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		/* Monte um algoritmo em que o usuário poderá cadastrar e pesquisar hóspedes. O algoritmo deve oferecer um menu com três opções ao
+		 *  usuário: 
+		 *  1- cadastrar; 2- pesquisar; 3- sair.
+		 *  O algoritmo deve permitir que o usuário realize essas operações repetidas vezes, até que ele digite a opção “3”, que encerra o
+		 *  algoritmo. Sempre que o usuário decide repetir o código deve ser solicitado novamente o que ele deseja fazer. A pesquisa deve
+		 *  funcionar mesmo que poucos ou nenhum nome tenha sido cadastrado, realize a pesquisa até última posição preenchida. A opção
+		 *  “cadastrar” deve permitir que o usuário informe um nome de hóspede, gravando-o em memória. O usuário só pode cadastrar até no
+		 *  máximo 7 hospedes, caso o número de hospedes seja maior que sete não deve ser solicitado o novo nome e uma mensagem
+		 *  (“Máximo de cadastros atingido”) deve ser exibida. A opção “Pesquisar” deve permitir que ousuário informe um nome e, caso seja
+		 *  encontrado um nome exatamente igual, mostre a mensagem “Hospede (nome) foi encontrado no índice”
+		 *  (posição do vetor onde foi encontrado). Todas as posições preenchidas do vetor devem ser verificadas. Caso não tenha sido encontrado
+		 *  o nome em nenhuma das posições deve ser exibida a mensagem de “Hospede não encontrado”. */
+
+		
+		cadeia hospede[7], nome
+		caracter opcao
+		inteiro i = 0
+
+		faca{
+		escreva ("----- SISTEMA -----\n[1] para CADASTRAR\n[2] para PESQUISAR\n[3] para SAIR\n\nR: ")
+		leia (opcao)
+		limpa()
+			se (opcao == '1'){
+				se (i < 7){
+					escreva ("----- CADASTRO -----\nDigite um hóspede: ")
+					leia (hospede[i])
+					limpa()
+					i++
+				}
+				senao{
+					escreva ("----- CADASTRO -----\nMáximo de cadastros atingido!\n\n")
+				}
+			}
+			senao se (opcao == '2'){
+			inteiro valido = 0
+				escreva ("----- PESQUISA -----\nProcure um hóspede: ")
+				leia (nome)
+				para (inteiro indice = 0; indice < 7; indice++){
+					se (hospede[indice] == nome){
+						escreva ("---\nHóspede ",nome," foi encontrado no índice ",indice,"\n\n")
+						valido++
+					}
+				}
+				se (valido == 0){
+						escreva ("---\nHóspede ",nome," não foi encontrado\n\n")
+					}
+			}
+		} enquanto (opcao == '1' ou opcao == '2')
+			escreva ("-------------------\nO sistema foi encerrado.\n-------------------")
+	}
+}
