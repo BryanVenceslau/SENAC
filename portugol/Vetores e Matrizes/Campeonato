@@ -1,0 +1,42 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		cadeia time[3]
+
+		escreva ("--- CAMPEONATO CARIOCA ---\n\n")
+		para (inteiro i = 0; i < 3; i++){
+			escreva (i + 1,"°: ")
+			leia (time[i])
+		}
+		escreva ("\n---------- JOGOS ---------")
+		para (inteiro i = 0; i < 1; i++){
+			para (inteiro j = i + 1; j <= 2; j++){
+				se (time[i] != time[j]){
+					escreva ("\n",time[i],"   \t[ ] x [ ] ",time[j])
+				}
+			}
+		}
+		para (inteiro i = 1; i < 2; i++){
+			para (inteiro h = i - 1; h < 1; h++){
+				se (time[i] != time[h]){
+					escreva ("\n",time[i],"   \t[ ] x [ ] ",time[h])
+				}
+			}
+			para (inteiro h = i + 1; h < 3; h++){
+				se (time[i] != time[h]){
+					escreva ("\n",time[i],"   \t[ ] x [ ] ",time[h])
+				}
+			}
+		}
+		para (inteiro i = 2; i < 3; i++){
+			para (inteiro j = i - 2; j < 3; j++){
+				se (time[i] != time[j]){
+					escreva ("\n",time[i],"   \t[ ] x [ ] ",time[j])
+				}
+			}
+		}
+		escreva ("\n--------------------------")
+	}
+}
