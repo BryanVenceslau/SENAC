@@ -1,0 +1,27 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		inteiro vetor[4], aux
+
+		escreva ("Digite um valor\n\n")
+		para (inteiro i = 0; i < 4; i++){
+			escreva (i + 1,"°: ")
+			leia (vetor[i])
+		}
+		para (inteiro i = 0; i < 4; i++){
+			para (inteiro j = i + 1; j < 4; j++){
+				se (vetor[i] > vetor[j]){
+					aux = vetor[i]
+					vetor[i] = vetor[j]
+					vetor[j] = aux
+				}
+			}
+		}
+		limpa()
+		para (inteiro i = 0; i < 4; i++){
+			escreva ("\n",vetor[i])
+		}
+	}
+}
