@@ -1,1 +1,96 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		inteiro matriz[4][4]
+		caracter opcao 
 
+		escreva ("----- MATRIZ DE ORDEM 4 -----\n")
+		para (inteiro i = 0; i < 4; i++){
+			para (inteiro j = 0; j < 4; j++){
+				escreva ("Valores para a posição [",i," ,",j,"]: ")
+				leia (matriz[i][j])
+			}
+		}
+		limpa()
+		faca{
+		escreva ("----- MENU DE OPÇÕES -----\n[1] Mostrar a Matriz\n[2] Diagonal Principal\n[3] Triângulo Superior\n[4] Triângulo Inferior\n[5] Sair\n\nR: ")
+		leia (opcao)
+		limpa()
+			se (opcao == '1'){
+				para (inteiro i = 0; i < 4; i++){
+					para (inteiro j = 0; j < 4; j++){
+						escreva (matriz[i][j],"\t")
+					}
+					escreva ("\n")
+				}
+			}
+			senao se (opcao == '2'){
+				para (inteiro i = 0; i < 4; i++){
+					para (inteiro j = 0; j < 4; j++){
+						se (i == j){
+						escreva (matriz[i][j],"\t")
+						}
+					}
+					se (i == 0){
+						escreva ("\n\t")
+					}
+					senao se (i == 1){
+						escreva ("\n\t\t")
+					}
+					senao se (i == 2){
+						escreva ("\n\t\t\t")
+					}
+					senao se (i == 3){
+						escreva ("\n\t\t\t\t")
+					}
+				}
+			}
+			senao se (opcao == '3'){
+				para (inteiro i = 0; i < 4; i++){
+					para (inteiro j = i + 1; j < 4; j++){
+						se (i == 0 ou (i == 1 e j == i + 2)){
+						escreva ("\t")
+						}
+						senao se (i == 1){
+							escreva ("\t\t")
+						}
+						senao se (i == 2){
+							escreva ("\t\t\t")
+						}
+						escreva (matriz[i][j])
+					}
+					escreva ("\n")
+				}
+			}
+			senao se (opcao == '4'){
+				para (inteiro i = 0; i < 4; i++){
+					para (inteiro j = 0; j < 4; j++){
+						se (i == 0){
+							escreva ("\t")
+						}
+						senao se(i == 1){
+							se (i != j e j == 0){
+								escreva (matriz[i][j])	
+							}
+						}
+						senao se (i == 2){
+							se (i != j e j < 2){
+								escreva (matriz[i][j],"\t")
+							}
+						}
+						senao se (i == 3){
+							se (i != j e j < 3){
+								escreva (matriz[i][j],"\t")
+							}
+						}
+					}
+					escreva ("\n")
+				}
+			}
+		escreva ("\n")	
+		} enquanto(opcao != '5')
+			escreva ("-----\nSaindo do Sistema\n-----")
+	}
+}
