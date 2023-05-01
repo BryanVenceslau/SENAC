@@ -1,1 +1,123 @@
+programa
+{
+	
+inclua biblioteca Matematica --> mat
+	funcao inicio()
+	{
+		const real valor = 30.99
+		real mesa[4], total
+		inteiro numero, j = 0
+		cadeia quarto[10], hospede[7], nome
+		caracter opcao, ordem, menu, opcao1
 
+		escreva ("----- MENU -----\n[1] RESTAURANTE\n[2] HOTEL\n[3] SISTEMA\n-----\nR: ")
+		leia (menu)
+		limpa()
+		escolha (menu){
+			caso '1':
+				escreva ("--- RESTAURANTE ---")
+				para (inteiro i = 0; i < 4; i++){
+					escreva ("\nValor gasto da mesa ",i + 1,":\nR$ ")
+					leia (mesa[i])
+				}
+				limpa()
+				escreva ("--- RESTAURANTE ---")
+				para (inteiro i = 0; i < 4; i++){
+					total = valor - mesa[i]
+					se (valor <= mesa[i]){
+						escreva ("\nMesa ",i + 1," não tem nada à pagar!")
+					}
+					senao{
+						escreva ("\nMesa ",i + 1," precisa pagar R$",mat.arredondar(total, 2))
+					}
+				}
+				escreva ("\n-------------------")
+			pare
+			caso '2':
+				faca{
+					escreva ("---------------------------- HOTEL --------------------------\n")
+					para (inteiro i = 0; i < 5; i++){
+						se (quarto[i] == ""){
+							escreva ("[ Quarto ",i + 1," (L) ]") 
+						}
+						senao{
+							escreva ("[ Quarto ",i + 1," (O) ]")
+							}
+					}
+					escreva ("\n")
+					para (inteiro i = 5; i < 10; i++){
+						se (quarto[i] == ""){
+							escreva ("[ Quarto ",i + 1," (L) ]") 
+						}
+						senao{
+							escreva ("[ Quarto ",i + 1," (O) ]")
+							}
+					}
+					escreva ("\n-------------------------------------------------------------\n")
+					escreva ("Selecione o número do Quarto: ")
+					leia (numero)
+					escreva ("\nO quarto está livre ou ocupado? [L/O]\nR: ")
+					leia (ordem)
+						se (quarto[numero - 1] == "" e (ordem == 'l' ou ordem == 'L')){
+							escreva ("-----\nO quarto já está vazio")
+						}
+						senao se (quarto[numero - 1] == "X" e (ordem == 'l' ou ordem == 'L')){
+							escreva ("-----\nO quarto foi liberado")
+							quarto[numero - 1] = ""
+						}
+						senao se ((quarto[numero - 1] == "" e (ordem == 'o' ou ordem == 'O')) ou (quarto[numero - 1] == "X" e (ordem == 'o' ou ordem == 'O'))){
+							escreva ("-----\nO quarto já está ocupado")
+							quarto[numero - 1] = "X"
+						}
+					
+					escreva ("\n-----\nDeseja continuar? [S/N]\nR: ")
+					leia (opcao)
+					limpa()
+				}enquanto (opcao == 's' ou opcao == 'S')
+				escreva ("----------------- HOTEL -----------------")
+					para (inteiro i = 0; i < 10; i++){
+						se (quarto[i] == ""){
+							escreva ("\n[ Quarto ",i + 1," (L) ]") 
+						}
+						senao{
+							escreva ("\n[ Quarto ",i + 1," (O) ]")
+							}
+					}
+					escreva ("\n-----------------------------------------\n")
+			pare
+			caso '3':
+				faca{
+				escreva ("----- SISTEMA -----\n[1] para CADASTRAR\n[2] para PESQUISAR\n[3] para SAIR\n\nR: ")
+				leia (opcao1)
+				limpa()
+					se (opcao1 == '1'){
+						se (j < 7){
+							escreva ("----- CADASTRO -----\nDigite um hóspede: ")
+							leia (hospede[j])
+							limpa()
+							j++
+						}
+						senao{
+							escreva ("----- CADASTRO -----\nMáximo de cadastros atingido!\n\n")
+						}
+					}
+					senao se (opcao1 == '2'){
+					inteiro valido = 0
+						escreva ("----- PESQUISA -----\nProcure um hóspede: ")
+						leia (nome)
+						para (inteiro indice = 0; indice < 7; indice++){
+							se (hospede[indice] == nome){
+								escreva ("---\nHóspede ",nome," foi encontrado no índice ",indice,"\n\n")
+								valido++
+							}
+						}
+						se (valido == 0){
+								escreva ("---\nHóspede ",nome," não foi encontrado\n\n")
+							}
+					}
+				} enquanto (opcao1 == '1' ou opcao1 == '2')
+					escreva ("-------------------\nO sistema foi encerrado.\n-------------------")
+			pare
+		}
+	}
+}
