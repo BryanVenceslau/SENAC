@@ -1,0 +1,102 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		caracter velha[3][3] = {{'1', '2', '3'},{'4', '5', '6'},{'7', '8', '9'}}, posicao, simb = 'O'
+		logico finalizar = falso
+
+		faca{
+			//Montagem do jogo
+			escreva ("=========================\n     #JOGO DA VELHA#\n=========================\n")
+			para (inteiro i = 0; i < 3; i++){
+				para (inteiro j = 0; j < 3; j++){
+					se (j == 0){
+						escreva ("|")
+					}
+					escreva ("   ",velha[i][j],"\t|")
+				}
+				escreva ("\n=========================\n")
+			}
+			//Mudança de símbolo
+			se (simb == 'X'){
+				simb = 'O'
+			}
+			senao{
+				simb = 'X'
+			}
+			escreva ("Vai jogar [",simb,"] em qual posição?\nR: ")
+			leia (posicao)
+			//Verificação
+			inteiro contador = 0
+				para (inteiro i = 0; i < 3; i++){
+					para (inteiro j = 0; j < 3; j++){
+						se (velha[i][j] == posicao){
+							velha[i][j] = simb
+							contador++
+						}
+					}
+				}
+				enquanto (contador == 0){
+					escreva ("Jogava inválida!\nVai jogar [",simb,"] em qual posição?\nR: ")
+					leia (posicao)
+						para (inteiro i = 0; i < 3; i++){
+							para (inteiro j = 0; j < 3; j++){
+								se (velha[i][j] == posicao){
+									velha[i][j] = simb
+									contador++
+								}
+							}
+						}
+				}
+				enquanto (posicao < '1'){
+					escreva ("Jogava inválida!\nVai jogar [",simb,"] em qual posição?\nR: ")
+					leia (posicao)
+				}
+			//Ganhou em linha
+			para (inteiro i = 0; i < 3; i++){
+				se (velha[i][0] == velha[i][1] e velha[i][1] == velha[i][2]){
+					finalizar = verdadeiro
+				}
+			}
+			//Ganhou em Coluna
+			para (inteiro j = 0; j < 3; j++){
+				se (velha[0][j] == velha[1][j] e velha[1][j] == velha[2][j]){
+					finalizar = verdadeiro
+				}
+			}
+			//Ganhou na Diagonal Principal
+			se (velha[0][0] == velha[1][1] e velha[1][1] == velha[2][2]){
+				finalizar = verdadeiro
+			}//Ganhou na Diagonal Secundária
+			senao se (velha[0][2] == velha[1][1] e velha[1][1] == velha[2][0]){
+				finalizar = verdadeiro
+			}
+			//Velha
+			inteiro zerou = 0
+			para (inteiro i = 0; i < 3; i++){
+				para (inteiro j = 0; j < 3; j++){
+					se (velha[i][j] != 'X' e velha[i][j] != 'O'){
+						zerou++
+					}
+				}
+			}
+			se (zerou == 0){
+				finalizar = verdadeiro
+			}
+			limpa()
+		}enquanto(finalizar == falso)
+			//Jogo Finalizado
+			escreva ("=========================\n     #JOGO DA VELHA#\n=========================\n")
+			para (inteiro i = 0; i < 3; i++){
+				para (inteiro j = 0; j < 3; j++){
+					se (j == 0){
+						escreva ("|")
+					}
+					escreva ("   ",velha[i][j],"\t|")
+				}
+				escreva ("\n=========================\n")
+			}
+			escreva ("Jogo Finalizado!")
+	}
+}
